@@ -13,7 +13,11 @@ export default function PostsCreate(){
     const navigate = useNavigate();
 
     const handleFileChange = (e) => {
-        setImage(e.target.files[0]);
+        if (e.target.files.length > 0) {
+            const file = e.target.files[0];
+            console.log("Selected file:", file);
+            setImage(file);
+        }
     }
 
     const storePost = async (e) => {
