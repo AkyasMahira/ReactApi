@@ -28,7 +28,13 @@ export default function PostsCreate(){
         formData.append("title", title);
         formData.append("content", content);
 
-        await Api.post("/posts", formData).then((response) => {
+        await Api.post("/posts", formData,
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data"
+                },
+            }
+        ).then((response) => {
             navigate("/posts");
         }).catch((error) => {
             setError(error.response.data.message);
